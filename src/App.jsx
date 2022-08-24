@@ -1,13 +1,16 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
-  fetch("https://wger.de/api/v2/exerciseinfo/?limit=20&offset=20")
+  const [exercise, setExercise] = useState([]);
+  fetch("https://wger.de/api/v2/exercise/?format=json")
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => setExercise(data.results[0].name));
+
   return (
     <div className="App">
       <h1> Testing</h1>
-      <h2>{data.name}</h2>
+      <h2>{exercise}</h2>
     </div>
   );
 }
