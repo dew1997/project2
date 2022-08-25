@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import About from "./Pages/About";
-import Home from "./Pages/About";
+
+import Exercise from "./Pages/Exercise";
+import Workout from "./Pages/Workout";
 // import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 function App() {
   const [exercise, setExercise] = useState([]);
@@ -15,11 +17,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/About" element={<About />} />
-        </Routes>
         <h1> Testing</h1>
         <h2>{exercise}</h2>
+        <Routes>
+          <Route path="/About" element={<About />} />
+          <Route path="/Exercise" element={<Exercise />} />
+          <Route path="/Workout" element={<Workout />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
