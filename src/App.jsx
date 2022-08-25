@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-
+import Navbar from "./components/Navbar";
+import { BrowserRouter } from "react-router-dom";
 function App() {
   const [exercise, setExercise] = useState([]);
   fetch("https://wger.de/api/v2/exercise/?format=json")
@@ -9,8 +10,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Testing</h1>
-      <h2>{exercise}</h2>
+      <Navbar />
+      <BrowserRouter>
+        <h1> Testing</h1>
+        <h2>{exercise}</h2>
+      </BrowserRouter>
     </div>
   );
 }
