@@ -9,7 +9,7 @@ Icon
 - Homepage ( URL / )
 - Exercises ( /Exercise)
 - Workouts ( /Workouts)
-- About
+- About ( /About)
 
 ## Footer
 
