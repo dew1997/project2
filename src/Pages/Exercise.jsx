@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+
 import Table from "./Table";
 
 function Exercise() {
@@ -26,7 +26,6 @@ function Exercise() {
 
   return (
     <div>
-      <Navbar />
       {exercise.map((info) => {
         return (
           <Table

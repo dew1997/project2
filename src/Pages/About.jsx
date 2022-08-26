@@ -1,9 +1,6 @@
-import Navbar from "../components/Navbar";
-
 function About() {
   return (
     <div>
-      <Navbar />
       <h1>About Page</h1>
       <p>
         BarbellFlies is a website where you can find exercises that can be
