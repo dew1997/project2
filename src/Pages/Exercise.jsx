@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Table from "./Table";
 
 function Exercise() {
   const [exercise, setExercise] = useState([]);
@@ -10,8 +11,8 @@ function Exercise() {
       fetch(APIKEY)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          setExercise(data?.results[0]);
+          console.log(data.results);
+          setExercise(data.results);
         });
     };
     fetchApi();
@@ -20,9 +21,15 @@ function Exercise() {
   return (
     <div>
       <Navbar />
-      <h1> Exercise </h1>
-      <p>{exercise.name}</p>
-      <p>{exercise.muscles}</p>
+      {exercise.map((info) => {
+        return (
+          <Table
+            key={info.id}
+            name={info.name}
+            description={info.description}
+          />
+        );
+      })}
     </div>
   );
 }
