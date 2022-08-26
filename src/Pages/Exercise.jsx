@@ -4,14 +4,20 @@ import Table from "./Table";
 
 function Exercise() {
   const [exercise, setExercise] = useState([]);
+  const [page, setPage] = useState({});
+
+  const handleClick = () => {
+    setPage("https://wger.de/api/v2/exercise/?format=json&language=2&limit=40");
+  };
+
   useEffect(() => {
-    const APIKEY = "https://wger.de/api/v2/exercise/?format=json";
+    const APIKEY =
+      "https://wger.de/api/v2/exercise/?format=json&language=2&limit=20";
 
     const fetchApi = () => {
       fetch(APIKEY)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.results);
           setExercise(data.results);
         });
     };
@@ -30,6 +36,9 @@ function Exercise() {
           />
         );
       })}
+
+      <button onClick={handleClick}>Next Page</button>
+      <button> Previous Page</button>
     </div>
   );
 }

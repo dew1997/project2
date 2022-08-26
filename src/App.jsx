@@ -4,7 +4,7 @@ import About from "./Pages/About";
 import Exercise from "./Pages/Exercise";
 import Homepage from "./Pages/Homepage";
 import Workout from "./Pages/Workout";
-// import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">

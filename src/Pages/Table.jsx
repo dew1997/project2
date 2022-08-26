@@ -1,10 +1,13 @@
 function Table(props) {
   return (
-    <div>
-      <h1> Exercise </h1>
-      <p>{props.name}</p>
-      <p> {props.description}</p>
-    </div>
+    <table>
+      <tr>
+        <th> Exercise </th>
+        <td>{props.name}</td>
+        <td>{props.description}</td>
+      </tr>
+      <button>add to workout</button>
+    </table>
   );
 }
 
