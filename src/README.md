@@ -11,12 +11,6 @@ Icon
 - Workouts ( /Workouts)
 - About ( /About)
 
-## Footer
-
-- Github
-- Twitter
-- Facebook
-
 Components
 
 - Exercises ( /Exercise)

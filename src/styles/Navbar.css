@@ -10,6 +10,7 @@ body {
   align-items: center;
   gap: 2 rem;
   padding: 0 1 rem;
+  flex-direction: row;
 }
 
 .nav ul {
@@ -26,5 +27,9 @@ body {
 }
 
 .site-title {
-  font-size: 2rem;
+  font-size: 40px;
+}
+
+.nav img {
+  width: 70px;
 }

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import "./styles/Navbar.css";
+import "../styles/Navbar.css";
+import Dumbbell from "../images/dumbbell.png";
 function Navbar() {
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
-        Barbell Flies
+        <img src={Dumbbell} />
       </Link>
       <ul>
         <Link to="/Exercise">Exercise</Link>

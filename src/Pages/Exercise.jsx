@@ -7,7 +7,7 @@ function Exercise() {
   const [page, setPage] = useState({});
 
   const handleClick = () => {
-    setPage("https://wger.de/api/v2/exercise/?format=json&language=2&limit=40");
+    console.log("click");
   };
 
   useEffect(() => {
