@@ -1,43 +1,76 @@
 import { useEffect, useState } from "react";
-
-import Table from "./Table";
+import ExerciseTable from "./ExerciseTable";
+import Filter from "./Filter";
 
 function Exercise() {
   const [exercise, setExercise] = useState([]);
-  const [page, setPage] = useState({});
+  const [body, setBody] = useState([]);
+  const [equipment, setEquipment] = useState([]);
 
   const handleClick = () => {
     console.log("click");
   };
 
-  useEffect(() => {
-    const APIKEY =
-      "https://wger.de/api/v2/exercise/?format=json&language=2&limit=20";
+  const exerciseURL = "https://wger.de/api/v2/exercise/?format=json&language=2";
+  const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
+  const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
 
-    const fetchApi = () => {
-      fetch(APIKEY)
-        .then((response) => response.json())
-        .then((data) => {
-          setExercise(data.results);
-        });
-    };
-    fetchApi();
+  const fetchExercise = () => {
+    fetch(exerciseURL)
+      .then((response) => response.json())
+      .then((data) => {
+        setExercise(data.results);
+      });
+  };
+
+  const fetchBodyPart = () => {
+    fetch(bodyPartsURL)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.results);
+        setBody(data.results);
+      });
+  };
+  const fetchEquipments = () => {
+    fetch(equipmentsURL)
+      .then((response) => response.json())
+      .then((data) => {
+        setEquipment(data.results);
+      });
+  };
+
+  useEffect(() => {
+    fetchExercise();
+    fetchBodyPart();
+    fetchEquipments();
   }, []);
 
   return (
     <div>
-      {exercise.map((info) => {
-        return (
-          <Table
-            key={info.id}
-            name={info.name}
-            description={info.description}
-          />
-        );
-      })}
+      <div className="search">
+        {body.map((info) => {
+          return <Filter key={info.id} name={info.name} />;
+        })}
+        {equipment.map((info) => {
+          return <Filter key={info.id} name={info.name} />;
+        })}
 
-      <button onClick={handleClick}>Next Page</button>
-      <button> Previous Page</button>
+        <button onClick={handleClick}> Search</button>
+      </div>
+      <div className="container">
+        {exercise.map((info) => {
+          return (
+            <ExerciseTable
+              key={info.id}
+              name={info.name}
+              description={info.description}
+            />
+          );
+        })}
+
+        <button onClick={handleClick}>Next Page</button>
+        <button> Previous Page</button>
+      </div>
     </div>
   );
 }
