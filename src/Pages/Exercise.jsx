@@ -47,14 +47,17 @@ function Exercise() {
 
   return (
     <div>
-      <div className="search">
+      <div className="body">
         {body.map((info) => {
           return <Filter key={info.id} name={info.name} />;
         })}
+      </div>
+      <div>
         {equipment.map((info) => {
           return <Filter key={info.id} name={info.name} />;
         })}
-
+      </div>
+      <div className="button">
         <button onClick={handleClick}> Search</button>
       </div>
       <div className="container">
