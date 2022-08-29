@@ -20,9 +20,17 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "ADD_EXERCISE_TO_WORKOUT", payload: exercise });
   };
 
+  const removeExerciseFromWorkout = (id) => {
+    dispatch({ type: "REMOVE_EXERCISE_FROM_WORKOUT", payload: id });
+  };
+
   return (
     <GlobalContext.Provider
-      value={{ workout: state.workout, addExerciseToWorkout }}
+      value={{
+        workout: state.workout,
+        addExerciseToWorkout,
+        removeExerciseFromWorkout,
+      }}
     >
       {props.children}
     </GlobalContext.Provider>
