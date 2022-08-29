@@ -7,6 +7,7 @@ function Exercise() {
   const [body, setBody] = useState([]);
   const [equipment, setEquipment] = useState([]);
   const [changePage, setChangePage] = useState(0);
+  const [categoryID, setCategoryID] = useState();
 
   const handlePageIncrement = () => {
     setChangePage(changePage + 20);
@@ -14,7 +15,7 @@ function Exercise() {
   };
 
   const handleSearch = () => {};
-
+  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyid}&equipment=${equipmentid}`;
   const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=20&offset=${changePage}`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
@@ -50,15 +51,17 @@ function Exercise() {
 
   return (
     <div>
-      <div className="filters">
+      <div className="targetarea">
         {body.map((info) => {
-          return <Filter key={info.id} name={info.name} />;
+          return <Filter key={info.id} name={info.name} bodyid={info.id} />;
         })}
       </div>
 
-      <div>
+      <div className="equipment">
         {equipment.map((info) => {
-          return <Filter key={info.id} name={info.name} />;
+          return (
+            <Filter key={info.id} name={info.name} equipmentid={info.id} />
+          );
         })}
       </div>
       <div className="button">

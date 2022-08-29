@@ -3,6 +3,8 @@ function Filter(props) {
     <>
       <input type="radio" name="muscles" />
       <label>{props.name} </label>
+      <label>{props.bodyid} </label>
+      <label>{props.equipmentid}</label>
     </>
   );
 }
