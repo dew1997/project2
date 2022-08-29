@@ -10,17 +10,27 @@ function Exercise() {
   const [changePage, setChangePage] = useState(0);
   const [bodyId, setBodyId] = useState([]);
   const [equipmentId, setEquipmentId] = useState([]);
-  //   const [categoryID, setCategoryID] = useState();
+  //   const [workout, setWorkout] = useState([]);
 
   const handlePageIncrement = () => {
     setChangePage(changePage + 20);
-    fetchExercise();
+    fetch(searchURL)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.results);
+        setExercise(data.results);
+      });
   };
 
   const handleSearch = () => {
     setBodyId(bodyId);
     setEquipmentId(equipmentId);
-    console.log(searchURL);
+    fetchSearchURL();
+    setBodyId([]);
+    setEquipmentId([]);
+  };
+
+  const fetchSearchURL = () => {
     fetch(searchURL)
       .then((response) => response.json())
       .then((data) => {
@@ -28,7 +38,7 @@ function Exercise() {
       });
   };
 
-  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}`;
+  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}&limit=20&offset=${changePage}`;
   const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=20&offset=${changePage}`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
@@ -37,6 +47,7 @@ function Exercise() {
     fetch(exerciseURL)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.results);
         setExercise(data.results);
       });
   };
@@ -77,7 +88,7 @@ function Exercise() {
             );
           })}
         </div>
-
+        <br />
         <div className="equipment">
           {equipment.map((info) => {
             return (
@@ -97,12 +108,13 @@ function Exercise() {
       </div>
 
       <div className="exercises">
-        {exercise.map((info) => {
+        {exercise.map((exercise) => {
           return (
             <ExerciseTable
-              key={info.id}
-              name={info.name}
-              description={info.description}
+              key={exercise.id}
+              name={exercise.name}
+              description={exercise.description}
+              exercise={exercise}
             />
           );
         })}
