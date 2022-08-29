@@ -1,21 +1,34 @@
 import { useEffect, useState } from "react";
+import Equipment from "./Equipment";
 import ExerciseTable from "./ExerciseTable";
-import Filter from "./Filter";
+import TargetArea from "./TargetArea";
 
 function Exercise() {
   const [exercise, setExercise] = useState([]);
   const [body, setBody] = useState([]);
   const [equipment, setEquipment] = useState([]);
   const [changePage, setChangePage] = useState(0);
-  const [categoryID, setCategoryID] = useState();
+  const [bodyId, setBodyId] = useState([]);
+  const [equipmentId, setEquipmentId] = useState([]);
+  //   const [categoryID, setCategoryID] = useState();
 
   const handlePageIncrement = () => {
     setChangePage(changePage + 20);
     fetchExercise();
   };
 
-  const handleSearch = () => {};
-  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyid}&equipment=${equipmentid}`;
+  const handleSearch = () => {
+    setBodyId(bodyId);
+    setEquipmentId(equipmentId);
+    console.log(searchURL);
+    fetch(searchURL)
+      .then((response) => response.json())
+      .then((data) => {
+        setExercise(data.results);
+      });
+  };
+
+  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}`;
   const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=20&offset=${changePage}`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
@@ -51,22 +64,38 @@ function Exercise() {
 
   return (
     <div>
-      <div className="targetarea">
-        {body.map((info) => {
-          return <Filter key={info.id} name={info.name} bodyid={info.id} />;
-        })}
+      <div className="SearchBox">
+        <div className="targetarea">
+          {body.map((info) => {
+            return (
+              <TargetArea
+                key={info.id}
+                id={info.id}
+                name={info.name}
+                setBodyId={setBodyId}
+              />
+            );
+          })}
+        </div>
+
+        <div className="equipment">
+          {equipment.map((info) => {
+            return (
+              <Equipment
+                key={info.id}
+                id={info.id}
+                name={info.name}
+                setEquipmentId={setEquipmentId}
+              />
+            );
+          })}
+        </div>
+
+        <div className="button">
+          <button onClick={handleSearch}> Search</button>
+        </div>
       </div>
 
-      <div className="equipment">
-        {equipment.map((info) => {
-          return (
-            <Filter key={info.id} name={info.name} equipmentid={info.id} />
-          );
-        })}
-      </div>
-      <div className="button">
-        <button onClick={handleSearch}> Search</button>
-      </div>
       <div className="exercises">
         {exercise.map((info) => {
           return (
