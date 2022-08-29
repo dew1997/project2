@@ -6,12 +6,16 @@ function Exercise() {
   const [exercise, setExercise] = useState([]);
   const [body, setBody] = useState([]);
   const [equipment, setEquipment] = useState([]);
+  const [changePage, setChangePage] = useState(0);
 
-  const handleClick = () => {
-    console.log("click");
+  const handlePageIncrement = () => {
+    setChangePage(changePage + 20);
+    fetchExercise();
   };
 
-  const exerciseURL = "https://wger.de/api/v2/exercise/?format=json&language=2";
+  const handleSearch = () => {};
+
+  const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=20&offset=${changePage}`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
 
@@ -27,7 +31,6 @@ function Exercise() {
     fetch(bodyPartsURL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
         setBody(data.results);
       });
   };
@@ -43,24 +46,25 @@ function Exercise() {
     fetchExercise();
     fetchBodyPart();
     fetchEquipments();
-  }, []);
+  }, [changePage]);
 
   return (
     <div>
-      <div className="body">
+      <div className="filters">
         {body.map((info) => {
           return <Filter key={info.id} name={info.name} />;
         })}
       </div>
+
       <div>
         {equipment.map((info) => {
           return <Filter key={info.id} name={info.name} />;
         })}
       </div>
       <div className="button">
-        <button onClick={handleClick}> Search</button>
+        <button onClick={handleSearch}> Search</button>
       </div>
-      <div className="container">
+      <div className="exercises">
         {exercise.map((info) => {
           return (
             <ExerciseTable
@@ -71,8 +75,7 @@ function Exercise() {
           );
         })}
 
-        <button onClick={handleClick}>Next Page</button>
-        <button> Previous Page</button>
+        <button onClick={handlePageIncrement}>Next Page</button>
       </div>
     </div>
   );
