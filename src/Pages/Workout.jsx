@@ -10,11 +10,13 @@ function Workout() {
         <div>
           {workout.map((exercise) => (
             <>
-              <h3>{exercise.name} </h3>
-              <p>{exercise.description}</p>
-              <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
-                Remove from list
-              </button>
+              <div key={exercise.id}>
+                <h3>{exercise.name} </h3>
+                <p>{exercise.description}</p>
+                <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
+                  Remove from list
+                </button>
+              </div>
             </>
           ))}
         </div>

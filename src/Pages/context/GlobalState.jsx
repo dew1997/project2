@@ -7,6 +7,7 @@ const initialState = {
     : [],
 };
 
+export const EXERCISE_PER_PAGE = 20;
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = (props) => {

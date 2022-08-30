@@ -2,45 +2,39 @@ import { useEffect, useState } from "react";
 import Equipment from "./Equipment";
 import ExerciseTable from "./ExerciseTable";
 import TargetArea from "./TargetArea";
-
+import { EXERCISE_PER_PAGE } from "./context/GlobalState";
+import Pagination from "./Pagination";
 function Exercise() {
   const [exercise, setExercise] = useState([]);
   const [body, setBody] = useState([]);
   const [equipment, setEquipment] = useState([]);
-  const [changePage, setChangePage] = useState(0);
   const [bodyId, setBodyId] = useState([]);
   const [equipmentId, setEquipmentId] = useState([]);
+  //   const [offset, setOffset] = useState(0);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   //   const [workout, setWorkout] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
 
-  const handlePageIncrement = () => {
-    setChangePage(changePage + 20);
-    fetch(searchURL)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.results);
-        setExercise(data.results);
-      });
+  const startIndex = (page - 1) * EXERCISE_PER_PAGE;
+  const selectedExercise = exercise.slice(
+    startIndex,
+    startIndex + EXERCISE_PER_PAGE
+  );
+
+  const handleClick = (num) => {
+    setPage(num);
   };
 
-  const handleSearch = () => {
+  const handleFilter = () => {
+    exerciseURL;
     setBodyId(bodyId);
     setEquipmentId(equipmentId);
-    fetchSearchURL();
+    fetchExercise();
     setBodyId([]);
     setEquipmentId([]);
   };
 
-  const fetchSearchURL = () => {
-    fetch(searchURL)
-      .then((response) => response.json())
-      .then((data) => {
-        setExercise(data.results);
-      });
-  };
-
-  const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}&limit=20&offset=${changePage}`;
-  const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=300&offset=${changePage}`;
+  const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}&limit=300&offset=`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
 
@@ -48,8 +42,9 @@ function Exercise() {
     fetch(exerciseURL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
+        console.log(data.results.length);
         setExercise(data.results);
+        setTotalPages(Math.ceil(data.results.length / EXERCISE_PER_PAGE));
       });
   };
 
@@ -72,22 +67,8 @@ function Exercise() {
     fetchExercise();
     fetchBodyPart();
     fetchEquipments();
-  }, [changePage]);
+  }, []);
 
-  const exercisePerPage = 20;
-  const pagesVisited = pageNumber * exercisePerPage;
-  const displayExercise = exercise
-    .slice(pagesVisited + exercisePerPage)
-    .map((exercise) => {
-      return (
-        <ExerciseTable
-          key={exercise.id}
-          name={exercise.name}
-          description={exercise.description}
-          exercise={exercise}
-        />
-      );
-    });
   return (
     <div>
       <div className="SearchBox">
@@ -118,14 +99,24 @@ function Exercise() {
         </div>
 
         <div className="button">
-          <button onClick={handleSearch}> Search</button>
+          <button onClick={handleFilter}> Search</button>
         </div>
       </div>
 
       <div className="exercises">
-        {displayExercise}
+        {selectedExercise.map((exercise) => {
+          return (
+            <ExerciseTable
+              key={exercise.id}
+              name={exercise.name}
+              description={exercise.description}
+              exercise={exercise}
+            />
+          );
+        })}
 
-        <button onClick={handlePageIncrement}>Next Page</button>
+        {/* <button onClick={handlePageIncrement}>Next Page</button> */}
+        <Pagination totalPages={totalPages} handleClick={handleClick} />
       </div>
     </div>
   );

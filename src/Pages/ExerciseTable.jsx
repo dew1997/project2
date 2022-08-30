@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GlobalContext } from "./context/GlobalState";
+
 function ExerciseTable({ exercise }) {
   const { addExerciseToWorkout, workout } = useContext(GlobalContext);
 
