@@ -11,6 +11,7 @@ function Exercise() {
   const [bodyId, setBodyId] = useState([]);
   const [equipmentId, setEquipmentId] = useState([]);
   //   const [workout, setWorkout] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
 
   const handlePageIncrement = () => {
     setChangePage(changePage + 20);
@@ -39,7 +40,7 @@ function Exercise() {
   };
 
   const searchURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}&limit=20&offset=${changePage}`;
-  const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=20&offset=${changePage}`;
+  const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&limit=300&offset=${changePage}`;
   const bodyPartsURL = "https://wger.de/api/v2/exercisecategory/?format=json";
   const equipmentsURL = "https://wger.de/api/v2/equipment/?format=json";
 
@@ -73,6 +74,20 @@ function Exercise() {
     fetchEquipments();
   }, [changePage]);
 
+  const exercisePerPage = 20;
+  const pagesVisited = pageNumber * exercisePerPage;
+  const displayExercise = exercise
+    .slice(pagesVisited + exercisePerPage)
+    .map((exercise) => {
+      return (
+        <ExerciseTable
+          key={exercise.id}
+          name={exercise.name}
+          description={exercise.description}
+          exercise={exercise}
+        />
+      );
+    });
   return (
     <div>
       <div className="SearchBox">
@@ -108,16 +123,7 @@ function Exercise() {
       </div>
 
       <div className="exercises">
-        {exercise.map((exercise) => {
-          return (
-            <ExerciseTable
-              key={exercise.id}
-              name={exercise.name}
-              description={exercise.description}
-              exercise={exercise}
-            />
-          );
-        })}
+        {displayExercise}
 
         <button onClick={handlePageIncrement}>Next Page</button>
       </div>
