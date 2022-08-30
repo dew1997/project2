@@ -10,10 +10,8 @@ function Exercise() {
   const [equipment, setEquipment] = useState([]);
   const [bodyId, setBodyId] = useState([]);
   const [equipmentId, setEquipmentId] = useState([]);
-  //   const [offset, setOffset] = useState(0);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  //   const [workout, setWorkout] = useState([]);
 
   const startIndex = (page - 1) * EXERCISE_PER_PAGE;
   const selectedExercise = exercise.slice(
@@ -104,13 +102,13 @@ function Exercise() {
       </div>
 
       <div className="exercises">
-        <ExerciseTable
+        {/* <ExerciseTable
           key={exercise.id}
           name={exercise.name}
           description={exercise.description}
           exercise={exercise}
           equipment={equipment}
-        />
+        /> */}
         {selectedExercise.map((exercise) => {
           return (
             <ExerciseTable
