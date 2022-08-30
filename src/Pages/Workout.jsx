@@ -12,7 +12,7 @@ function Workout() {
             <>
               <div key={exercise.id}>
                 <h3>{exercise.name} </h3>
-                <p>{exercise.description}</p>
+                <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
                 <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
                   Remove from list
                 </button>
@@ -21,7 +21,7 @@ function Workout() {
           ))}
         </div>
       ) : (
-        <h3>no exercise</h3>
+        <h3>Add some exercises to see your custom workout!</h3>
       )}
     </div>
   );

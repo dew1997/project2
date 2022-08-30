@@ -104,6 +104,13 @@ function Exercise() {
       </div>
 
       <div className="exercises">
+        <ExerciseTable
+          key={exercise.id}
+          name={exercise.name}
+          description={exercise.description}
+          exercise={exercise}
+          equipment={equipment}
+        />
         {selectedExercise.map((exercise) => {
           return (
             <ExerciseTable

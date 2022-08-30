@@ -8,6 +8,7 @@ function Equipment({ id, name, setEquipmentId }) {
         onClick={(event) => setEquipmentId(event.target.id)}
       />
       <label>{name} </label>
+
       <label>{id}</label>
     </div>
   );
