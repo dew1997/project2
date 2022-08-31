@@ -71,8 +71,11 @@ function Exercise() {
 
   return (
     <div>
-      <div className="SearchBox">
-        <div className="targetarea">
+      <div className="container grid-cols-1 gap-1">
+        <h1 className="text-xl font-bold w-full sm:text-2xl pb-2 text-center">
+          Filter{" "}
+        </h1>
+        <div className="">
           <TargetArea key={body.id} body={body} setBodyId={setBodyId} />
         </div>
         <br />
@@ -83,8 +86,7 @@ function Exercise() {
             setEquipmentId={setEquipmentId}
           />
         </div>
-
-        <div className="button">
+        <div className="text-center">
           <button onClick={handleFilter}> Search</button>
           <button onClick={handleReset}>Reset</button>
         </div>

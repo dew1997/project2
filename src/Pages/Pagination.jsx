@@ -3,11 +3,13 @@ function Pagination({ totalPages, handleClick }) {
 
   return (
     <div>
-      {pages.map((num) => (
-        <button key={num} onClick={() => handleClick(num)}>
-          {num}
-        </button>
-      ))}
+      <ol className="flex justify-center text-xs font-medium space-x-1">
+        {pages.map((num) => (
+          <button key={num} onClick={() => handleClick(num)}>
+            {num}
+          </button>
+        ))}
+      </ol>
     </div>
   );
 }

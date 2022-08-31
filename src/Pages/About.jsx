@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div>
+    <div className="relative p-8 text-center rounded-lg">
       <h1>About Page</h1>
       <p>
         BarbellFlies is a fitness wikipedia where you can find all the possible

@@ -8,9 +8,9 @@ function ExerciseTable({ exercise }) {
 
   const workoutDisabled = storedExercise ? true : false;
   return (
-    <div>
+    <div className="relative p-8 text-center border border-gray-200 rounded-lg">
       <h3>{exercise.name} </h3>
-      <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
+      <p> {exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
       <button
         disabled={workoutDisabled}
         onClick={() => addExerciseToWorkout(exercise)}

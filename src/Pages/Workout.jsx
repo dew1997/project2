@@ -4,10 +4,9 @@ function Workout() {
   const { removeExerciseFromWorkout } = useContext(GlobalContext);
   const { workout } = useContext(GlobalContext);
   return (
-    <div>
-      <h1>Your custom workout</h1>
+    <div className="relative p-8 text-center border border-gray-200 rounded-lg">
       {workout.length > 0 ? (
-        <div>
+        <div className="relative p-8 text-center border border-gray-200 rounded-lg">
           {workout.map((exercise) => (
             <div key={exercise.id}>
               <h3>{exercise.name} </h3>
@@ -19,7 +18,12 @@ function Workout() {
           ))}
         </div>
       ) : (
-        <h3>Add some exercises to see your custom workout!</h3>
+        <div className="relative p-8 text-center border border-gray-200 rounded-lg">
+          <h2 className="text-2xl font-medium">There is nothing here...</h2>
+          <p className="mt-4 text-sm text-gray-500">
+            Added exercise will appear here, try adding some!
+          </p>
+        </div>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 function TargetArea({ body, setBodyId }) {
   return (
-    <div>
+    <div className="relative p-8 text-center border border-gray-200 rounded-lg">
+      <h1 className="text-xl font-bold w-full sm:text-2xl pb-2">Target Area</h1>
       {body.map((info) => (
         <div key={info.id}>
           <input
