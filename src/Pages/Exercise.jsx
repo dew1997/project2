@@ -24,12 +24,15 @@ function Exercise() {
   };
 
   const handleFilter = () => {
-    exerciseURL;
     setBodyId(bodyId);
     setEquipmentId(equipmentId);
     fetchExercise();
     setBodyId([]);
     setEquipmentId([]);
+  };
+
+  const handleReset = () => {
+    fetchExercise();
   };
 
   const exerciseURL = `https://wger.de/api/v2/exercise/?format=json&language=2&category=${bodyId}&equipment=${equipmentId}&limit=300&offset=`;
@@ -71,33 +74,16 @@ function Exercise() {
     <div>
       <div className="SearchBox">
         <div className="targetarea">
-          {body.map((info) => {
-            return (
-              <TargetArea
-                key={info.id}
-                id={info.id}
-                name={info.name}
-                setBodyId={setBodyId}
-              />
-            );
-          })}
+          <TargetArea body={body} setBodyId={setBodyId} />
         </div>
         <br />
         <div className="equipment">
-          {equipment.map((info) => {
-            return (
-              <Equipment
-                key={info.id}
-                id={info.id}
-                name={info.name}
-                setEquipmentId={setEquipmentId}
-              />
-            );
-          })}
+          <Equipment equipment={equipment} setEquipmentId={setEquipmentId} />
         </div>
 
         <div className="button">
           <button onClick={handleFilter}> Search</button>
+          <button onClick={handleReset}>Reset</button>
         </div>
       </div>
 
@@ -120,7 +106,6 @@ function Exercise() {
           );
         })}
 
-        {/* <button onClick={handlePageIncrement}>Next Page</button> */}
         <Pagination totalPages={totalPages} handleClick={handleClick} />
       </div>
     </div>

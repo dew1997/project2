@@ -1,14 +1,21 @@
-function TargetArea({ id, name, setBodyId }) {
+function TargetArea({ body, setBodyId }) {
   return (
     <div>
-      <input
-        type="radio"
-        name="muscles"
-        id={id}
-        onClick={(event) => setBodyId(event.target.id)}
-      />
-      <label>{name} </label>
-      <label>{id} </label>
+      {body.map((info) => (
+        <>
+          <div key={info.id}>
+            <input
+              type="radio"
+              className="targetarea"
+              name="filter"
+              id={info.id}
+              onClick={(event) => setBodyId(event.target.id)}
+            />
+            <label>{info.name} </label>
+            <label>{info.id} </label>
+          </div>
+        </>
+      ))}
     </div>
   );
 }
