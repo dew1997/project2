@@ -22,20 +22,3 @@ function ExerciseTable({ exercise }) {
 }
 
 export default ExerciseTable;
-
-// return (
-//   <div>
-//     {selectedExercise.map((exercise) => (
-//       <>
-//         <h3>{exercise.name} </h3>
-//         <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
-//         <button
-//           disabled={workoutDisabled}
-//           onClick={() => addExerciseToWorkout(exercise)}
-//         >
-//           add to workout
-//         </button>
-//       </>
-//     ))}
-//   </div>
-// );

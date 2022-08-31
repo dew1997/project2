@@ -9,15 +9,13 @@ function Workout() {
       {workout.length > 0 ? (
         <div>
           {workout.map((exercise) => (
-            <>
-              <div key={exercise.id}>
-                <h3>{exercise.name} </h3>
-                <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
-                <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
-                  Remove from list
-                </button>
-              </div>
-            </>
+            <div key={exercise.id}>
+              <h3>{exercise.name} </h3>
+              <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
+              <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
+                Remove from list
+              </button>
+            </div>
           ))}
         </div>
       ) : (

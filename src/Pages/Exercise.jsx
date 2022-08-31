@@ -43,7 +43,6 @@ function Exercise() {
     fetch(exerciseURL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results.length);
         setExercise(data.results);
         setTotalPages(Math.ceil(data.results.length / EXERCISE_PER_PAGE));
       });
@@ -74,11 +73,15 @@ function Exercise() {
     <div>
       <div className="SearchBox">
         <div className="targetarea">
-          <TargetArea body={body} setBodyId={setBodyId} />
+          <TargetArea key={body.id} body={body} setBodyId={setBodyId} />
         </div>
         <br />
         <div className="equipment">
-          <Equipment equipment={equipment} setEquipmentId={setEquipmentId} />
+          <Equipment
+            key={equipment.id}
+            equipment={equipment}
+            setEquipmentId={setEquipmentId}
+          />
         </div>
 
         <div className="button">
@@ -87,27 +90,15 @@ function Exercise() {
         </div>
       </div>
 
-      <div className="exercises">
-        {/* <ExerciseTable
-          key={exercise.id}
-          name={exercise.name}
-          description={exercise.description}
-          exercise={exercise}
-          equipment={equipment}
-        /> */}
-        {selectedExercise.map((exercise) => {
-          return (
-            <ExerciseTable
-              key={exercise.id}
-              name={exercise.name}
-              description={exercise.description}
-              exercise={exercise}
-            />
-          );
-        })}
+      <ul className="exercises">
+        {selectedExercise.map((exercise) => (
+          <li key={exercise.id}>
+            <ExerciseTable exercise={exercise} />
+          </li>
+        ))}
 
         <Pagination totalPages={totalPages} handleClick={handleClick} />
-      </div>
+      </ul>
     </div>
   );
 }
