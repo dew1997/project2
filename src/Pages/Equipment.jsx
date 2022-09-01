@@ -6,12 +6,12 @@ function Equipment({ equipment, setEquipmentId }) {
         <div className="space-y-4" key={info.id}>
           <input
             type="radio"
-            className=""
+            className="w-6 h-6 border-gray-200"
             name="filter"
             id={info.id}
             onClick={(event) => setEquipmentId(event.target.id)}
           />
-          <label>
+          <label className="ml-2 text-sm font-medium text-gray-900 ">
             <span>{info.name}</span>
           </label>
         </div>

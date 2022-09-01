@@ -6,12 +6,12 @@ function TargetArea({ body, setBodyId }) {
         <div key={info.id}>
           <input
             type="radio"
-            className="targetarea"
+            className="w-6 h-6 border-gray-200"
             name="filter"
             id={info.id}
             onClick={(event) => setBodyId(event.target.id)}
           />
-          <label>
+          <label className="ml-2 text-sm font-medium text-gray-900 ">
             <span>{info.name}</span>
           </label>
         </div>

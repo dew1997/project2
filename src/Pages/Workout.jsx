@@ -9,7 +9,7 @@ function Workout() {
         <div className="relative p-8 text-center border border-gray-200 rounded-lg">
           {workout.map((exercise) => (
             <div key={exercise.id}>
-              <h3>{exercise.name} </h3>
+              <h3 className=" text-4xl font-bold">{exercise.name} </h3>
               <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
               <button onClick={() => removeExerciseFromWorkout(exercise.id)}>
                 Remove from list
