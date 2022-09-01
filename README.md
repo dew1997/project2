@@ -39,6 +39,8 @@
 BarbellFlies is a fitness wikipedia where you can find all the possible exercises that can be implemented in your next workout!
 Suitable for beginners who are looking to create a customisable workout.
 
+
+![](images/pic.png)
 ## Wireframe
 
 Fitness Wikipedia
