@@ -88,7 +88,7 @@ me to explore some CSS like tailwindCSS and its libraries. Looking forward to mo
 
 [tailwindCSS](https://tailwindcss.com/)
 
-[tailwindCSS CheatSheet] (https://tailwindcomponents.com/cheatsheet/)
+[tailwindCSS CheatSheet](https://tailwindcomponents.com/cheatsheet/)
 
 [Wger Api](https://wger.de/en/software/api)
 
