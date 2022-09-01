@@ -1,10 +1,6 @@
-## Wireframing
+## Wireframe
 
 Fitness Wikipedia
-
-## Navbar
-
-Icon
 
 - Homepage ( URL / )
 - Exercises ( /Exercise)
@@ -14,18 +10,18 @@ Icon
 Components
 
 - Exercises ( /Exercise)
-  Show the different exercises you can do, and indicate which area it targets
+  Show the different exercises you can do and descriptions
 
-<!-- - Workouts ( /Workouts) -->
+- Workouts ( /Workouts)
 
 Consider making it able to add into a custom workout list. (Remove from list )
 
 (Exercises for targeted area)
 click to add to workout list.
 
-- Shoulders ( /Exercise/Shoulders)
-- Chest (/Exercise/Chest)
-- Legs (/ Exercise/Legs)
-- Arms (/Exercise/Arms)
-- Back (/Exercise/Back)
-- Abs (/Exercise/Abs)
+- Shoulders
+- Chest
+- Legs
+- Arms
+- Back
+- Abs
