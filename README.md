@@ -33,6 +33,7 @@
 - Vite
 - React
 - WGER REST API 
+- Imsomnia
 
 ## Description
 
@@ -40,7 +41,7 @@ BarbellFlies is a fitness wikipedia where you can find all the possible exercise
 Suitable for beginners who are looking to create a customisable workout.
 
 
-![](src/images/pic.png)
+![](https://github.com/dew1997/project2/blob/main/src/images/pic.png)
 ## Wireframe
 
 Fitness Wikipedia
