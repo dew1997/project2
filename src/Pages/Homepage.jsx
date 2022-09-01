@@ -1,12 +1,22 @@
 function Homepage() {
   return (
-    <div className="w-full h-screen flex flex-col justify-between">
-      <div className="grid md:grid-cols-2 max-w-[1240px] m-auto">
-        <div className="flex flex-col justify-center md:items-start w-full px-2 py-4">
-          <p className="text-2x1">Welcome to BarbellFlies</p>
+    <aside className="overflow-hidden bg-[url(https://i.kym-cdn.com/entries/icons/original/000/009/740/DoULift.jpg)] bg-center bg-no-repeat bg-cover ">
+      <div className="p-8 md:p-12 lg:px-16 lg:py-24 bg-slate-900/30">
+        <div className="max-w-lg text-center sm:text-left">
+          <h2 className="text-2xl font-extrabold text-white sm:text-3xl md:text-5xl mb-2">
+            Welcome to BarbellFlies
+          </h2>
+
+          <p className="max-w-md text-white/90 md:mt-6 md:text-lg md:leading-relaxed md:block">
+            Do You Even Lift? (DYEL) is a condescending expression used on body
+            building and fitness forums to question the legitimacy of someone
+            fitness expertise or weight lifting routine.
+          </p>
+
+          <div className="mt-4 sm:mt-8"></div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }
 

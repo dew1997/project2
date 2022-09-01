@@ -11,9 +11,9 @@ function Equipment({ equipment, setEquipmentId }) {
             id={info.id}
             onClick={(event) => setEquipmentId(event.target.id)}
           />
-          <label>{info.name}</label>
-          <br />
-          <label>{info.id} </label>
+          <label>
+            <span>{info.name}</span>
+          </label>
         </div>
       ))}
     </div>

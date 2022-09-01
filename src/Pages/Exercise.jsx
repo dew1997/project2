@@ -71,25 +71,22 @@ function Exercise() {
 
   return (
     <div>
-      <div className="container grid-cols-1 gap-1">
-        <h1 className="text-xl font-bold w-full sm:text-2xl pb-2 text-center">
-          Filter{" "}
-        </h1>
-        <div className="">
+      <h1 className="text-xl font-bold w-full sm:text-2xl pb-2 text-center">
+        Filter
+      </h1>
+      <div className="container flex justify-around items-center">
+        <div className="body px-10">
           <TargetArea key={body.id} body={body} setBodyId={setBodyId} />
-        </div>
-        <br />
-        <div className="equipment">
           <Equipment
             key={equipment.id}
             equipment={equipment}
             setEquipmentId={setEquipmentId}
           />
         </div>
-        <div className="text-center">
-          <button onClick={handleFilter}> Search</button>
-          <button onClick={handleReset}>Reset</button>
-        </div>
+      </div>
+      <div className="text-center">
+        <button onClick={handleFilter}> Search</button>
+        <button onClick={handleReset}>Reset</button>
       </div>
 
       <ul className="exercises">

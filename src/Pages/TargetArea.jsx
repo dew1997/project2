@@ -11,8 +11,9 @@ function TargetArea({ body, setBodyId }) {
             id={info.id}
             onClick={(event) => setBodyId(event.target.id)}
           />
-          <label>{info.name} </label>
-          <label>{info.id} </label>
+          <label>
+            <span>{info.name}</span>
+          </label>
         </div>
       ))}
     </div>

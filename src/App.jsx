@@ -5,6 +5,7 @@ import Exercise from "./Pages/Exercise";
 import Homepage from "./Pages/Homepage";
 import Workout from "./Pages/Workout";
 import { GlobalProvider } from "./Pages/context/GlobalState";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/Workout" element={<Workout />} />
             </Routes>
           </div>
+          <Footer />
         </BrowserRouter>
       </div>
     </GlobalProvider>
